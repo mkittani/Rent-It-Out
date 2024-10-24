@@ -26,6 +26,9 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+// import models here
+db.Category = require('./categoryModel.js')(sequelize, DataTypes);
+
 db.sequelize
   .sync({ force: false })
   .then(() => {
