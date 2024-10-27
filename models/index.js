@@ -26,7 +26,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// import models here
+db.User = require('./userModel.js')(sequelize, DataTypes);
 db.Category = require('./categoryModel.js')(sequelize, DataTypes);
 
 db.sequelize
