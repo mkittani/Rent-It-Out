@@ -6,22 +6,21 @@ const app = express();
 
 const environment = process.env.NODE_ENV || 'development';
 
-console.log(`Environment: ${environment}`);
+const errorHandler = require('./middleware/errorHandler');
 
-// Import routes
 const categoryRoutes = require('./routes/categoryRouter');
+const userRoutes = require('./routes/userRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/categories', categoryRoutes);
+app.use('/api/users', userRoutes);
 
-// Test API
 app.get('/', (req, res) => {
   res.json({ message: 'All goooood!' });
 });
 
-const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
