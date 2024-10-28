@@ -1,38 +1,33 @@
-// app.js
 const express = require('express');
-const mysql = require('mysql2/promise');
-const verificationRoutes = require('./routes/verification');
-const reviewRoutes = require('./routes/reviews');
+require('dotenv').config();
+const db = require('./models');
 
 const app = express();
 
-// Middleware
+const environment = process.env.NODE_ENV || 'development';
+
+const errorHandler = require('./middleware/errorHandler');
+
+const categoryRoutes = require('./routes/categoryRouter');
+const userRoutes = require('./routes/userRouter');
+const itemRoutes = require('./routes/itemRouter');
+const transactionRoutes = require('./routes/transactionRouter');
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// MySQL Database Connection Setup
-const dbConfig = {
-  host: 'localhost',
-  user: 'your-username',
-  password: 'your-password',
-  database: 'your-database-name'
-};
+app.use('/api/categories', categoryRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/transactions', transactionRoutes);
 
-async function initializeDbConnection() {
-  try {
-    const connection = await mysql.createConnection(dbConfig);
-    console.log('MySQL connected');
-    // Store the connection globally for easy access in other modules
-    global.db = connection;
-  } catch (error) {
-    console.error('Error connecting to MySQL:', error);
-  }
-}
+app.get('/', (req, res) => {
+  res.json({ message: 'All goooood!' });
+});
 
-initializeDbConnection();
+app.use(errorHandler);
 
-// Routes
-app.use('/api', verificationRoutes);
-app.use('/api', reviewRoutes);
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running in ${environment} on port ${PORT}`);
+});
