@@ -6,6 +6,7 @@ router.post('/', itemController.createItem);
 
 router.get('/', itemController.getAllItems);
 
+
 router.get('/:id', itemController.getItemById);
 
 router.put('/:id', itemController.updateItem);
