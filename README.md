@@ -1,3 +1,4 @@
+
 ## Table of Contents
 
 - [Introduction](#Rent-It-Out)
@@ -8,14 +9,14 @@
 - [Demo](#demo)
 - [Authors](#authors)
 - [License](#license)
-
 # Rent It Out
 
 A Peer-to-Peer Rental Platform for Everyday Items.
 
 Rent-It-Out is a rental platform where users can list items for rent, browse available items, and manage rental transactions.
 
-It’s designed for individuals or businesses who want to rent out items in various categories, and for people seeking short-term rentals instead of purchasing.
+It’s designed for individuals or businesses who want to rent out items in various categories and for people seeking short-term rentals instead of purchasing.
+
 
 ## Features
 
@@ -32,42 +33,48 @@ It’s designed for individuals or businesses who want to rent out items in vari
 - **MySQL**: Database.
 - **Postman**: API building and documentation tool.
 - **Git**: Version control system.
-
+- **Draw.io**: UML drawing.
+- **VScode**: Our IDE.
+- **readme.so**: To write this readme file
 ## Run Locally
 
-Clone the project:
+- Clone the project:
 
 ```bash
   git clone https://github.com/mkittani/Rent-It-Out
 ```
 
-Install dependencies:
+- Start Apache & MySQL using XAMPP (or any other alternative).
+
+- Open phpMyAdmin, then create a database and name it "rentitout".
+
+- Install dependencies:
 
 ```bash
   npm install
 ```
 
-Start the server:
+- Start the server:
 
 ```bash
   npm run dev
 ```
 
+
 ## Documentation
 
 The API is documented using Postman. Access it [here](https://linktodocumentation)
 
+
 ## Demo
 
 Watch our cool [demo](https://linktodocumentation)
-
 ## Authors
 
 - [@Qais-Hweidi](https://github.com/Qais-Hweidi)
 - [@mohammedsalman99](https://github.com/mohammedsalman99)
 - [@MahmoudFarah003](https://github.com/MahmoudFarah003)
 - [@mkittani](https://github.com/mkittani)
-
 ## License
 
 [MIT](/LICENSE)
