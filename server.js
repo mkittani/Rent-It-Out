@@ -1,10 +1,6 @@
 const express = require('express');
 require('dotenv').config();
 const db = require('./models');
-const securityRouter = require('./routes/securityRouter');
-
-const userRoutes = require('./routes/userRoutes');
-const userReviews=require('./routes/reviews');
 
 const app = express();
 
@@ -16,7 +12,8 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
-const securityRoutes = require('./routes/securityRouter');
+const securityRouter = require('./routes/securityRouter');
+const userReviews = require('./routes/reviews');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
