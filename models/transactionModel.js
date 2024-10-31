@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
+      deliveryOptionId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'DeliveryOptions', 
+          key: 'id',
+        },
+      },
       rentalDuration: {
         type: DataTypes.INTEGER,
         allowNull: false,
