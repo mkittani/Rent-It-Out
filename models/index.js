@@ -43,6 +43,9 @@ db.Transaction.belongsTo(db.User, { foreignKey: 'renterId', as: 'renter' });
 db.Item.hasMany(db.Transaction, { foreignKey: 'itemId', as: 'transactions' });
 db.Transaction.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
 
+db.User.hasMany(db.Review, { foreignKey: 'renterId', as: 'reviews' });
+db.Review.belongsTo(db.User, { foreignKey: 'renterId', as: 'user' });
+
 db.Transaction.hasOne(db.SecurityDeposit, {
   foreignKey: 'transactionId',
   as: 'securityDeposit',
