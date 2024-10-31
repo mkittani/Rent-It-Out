@@ -29,9 +29,8 @@ db.User = require('./userModel.js')(sequelize, DataTypes);
 db.Category = require('./categoryModel.js')(sequelize, DataTypes);
 db.Item = require('./itemModel.js')(sequelize, DataTypes);
 db.Transaction = require('./transactionModel')(sequelize, DataTypes);
-db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes); // Corrected file name
+db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes);
 
-// Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
 db.Item.belongsTo(db.Category, { foreignKey: 'categoryId', as: 'category' });
 
@@ -44,9 +43,14 @@ db.Transaction.belongsTo(db.User, { foreignKey: 'renterId', as: 'renter' });
 db.Item.hasMany(db.Transaction, { foreignKey: 'itemId', as: 'transactions' });
 db.Transaction.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
 
-// Relationship between Transaction and SecurityDeposit
-db.Transaction.hasOne(db.SecurityDeposit, { foreignKey: 'transactionId', as: 'securityDeposit' });
-db.SecurityDeposit.belongsTo(db.Transaction, { foreignKey: 'transactionId', as: 'transaction' });
+db.Transaction.hasOne(db.SecurityDeposit, {
+  foreignKey: 'transactionId',
+  as: 'securityDeposit',
+});
+db.SecurityDeposit.belongsTo(db.Transaction, {
+  foreignKey: 'transactionId',
+  as: 'transaction',
+});
 
 db.sequelize
   .sync({ force: false })

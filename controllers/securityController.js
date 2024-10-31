@@ -1,4 +1,3 @@
-// controllers/securityController.js
 const db = require('../models');
 const SecurityDeposit = db.SecurityDeposit;
 const Transaction = db.Transaction;
@@ -7,16 +6,13 @@ exports.createSecurityDeposit = async (req, res) => {
     try {
         const { transactionId, amount, status } = req.body;
 
-        // Log the transactionId being passed
         console.log("Received transactionId:", transactionId);
 
-        // Check if the transaction ID exists in the database
         const transaction = await Transaction.findByPk(transactionId);
         if (!transaction) {
             return res.status(400).json({ success: false, message: "Transaction ID does not exist" });
         }
 
-        // Create the security deposit
         const securityDeposit = await SecurityDeposit.create({ transactionId, amount, status });
         res.status(201).json({ success: true, data: securityDeposit });
     } catch (error) {

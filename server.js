@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 require('dotenv').config();
 const db = require('./models');
@@ -14,12 +13,11 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
-const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
+const securityRoutes = require('./routes/securityRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Define routes
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
