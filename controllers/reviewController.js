@@ -37,3 +37,18 @@ exports.updateReview = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.deleteReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const review = await Review.findByPk(reviewId);
+
+    if (!review) return res.status(404).json({ message: 'Review not found' });
+
+    await review.destroy();
+    res.status(200).json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
