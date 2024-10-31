@@ -3,6 +3,9 @@ require('dotenv').config();
 const db = require('./models');
 const securityRouter = require('./routes/securityRouter');
 
+const userRoutes = require('./routes/userRoutes');
+const userReviews=require('./routes/reviews');
+
 const app = express();
 
 const environment = process.env.NODE_ENV || 'development';
@@ -23,6 +26,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/security-deposits', securityRouter);
+app.use('/api/reviews', userReviews);
 app.get('/', (req, res) => {
   res.json({ message: 'All good!' });
 });
