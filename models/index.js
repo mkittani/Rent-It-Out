@@ -32,7 +32,6 @@ db.Transaction = require('./transactionModel')(sequelize, DataTypes);
 db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes); // Corrected file name
 db.Review = require('./reviews')(sequelize, DataTypes);
 db.DeliveryOption = require('./deliveryOption.js')(sequelize, DataTypes);
-db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes);
 
 // Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
@@ -47,7 +46,9 @@ db.Transaction.belongsTo(db.User, { foreignKey: 'renterId', as: 'renter' });
 db.Item.hasMany(db.Transaction, { foreignKey: 'itemId', as: 'transactions' });
 db.Transaction.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
 
-// Relationship between Transaction and SecurityDeposit
+db.DeliveryOption.hasMany(db.Transaction, { foreignKey: 'deliveryOptionId', as: 'transactions' });
+db.Transaction.belongsTo(db.DeliveryOption, { foreignKey: 'deliveryOptionId', as: 'deliveryOption' });
+
 db.Transaction.hasOne(db.SecurityDeposit, { foreignKey: 'transactionId', as: 'securityDeposit' });
 db.SecurityDeposit.belongsTo(db.Transaction, { foreignKey: 'transactionId', as: 'transaction' });
 
