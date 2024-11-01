@@ -16,6 +16,8 @@ const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
 const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
 const reviewRoutes = require('./routes/reviews');
+const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes');
+const securityRoutes = require('./routes/securityRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,6 +29,8 @@ app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/security-deposits', securityRouter);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/deliveryoptions', deliveryOptionRoutes); 
+app.use('/api/security-deposits', securityRouter); 
 
 app.get('/', (req, res) => {
   res.json({ message: 'All good!' });
