@@ -17,7 +17,6 @@ const transactionRoutes = require('./routes/transactionRouter');
 const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
 const reviewRoutes = require('./routes/reviews');
 const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes');
-const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes'); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
