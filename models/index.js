@@ -28,10 +28,10 @@ db.User = require('./userModel.js')(sequelize, DataTypes);
 db.Category = require('./categoryModel.js')(sequelize, DataTypes);
 db.Item = require('./itemModel.js')(sequelize, DataTypes);
 db.Transaction = require('./transactionModel')(sequelize, DataTypes);
-
 db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes); // Corrected file name
 db.Review = require('./reviews')(sequelize, DataTypes);
 db.DeliveryOption = require('./deliveryOption.js')(sequelize, DataTypes);
+db.Dispute = require('./Dispute')(sequelize, DataTypes); // Added dispute model
 
 // Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
@@ -49,7 +49,12 @@ db.Transaction.belongsTo(db.DeliveryOption, { foreignKey: 'deliveryOptionId', as
 db.Transaction.hasOne(db.SecurityDeposit, { foreignKey: 'transactionId', as: 'securityDeposit' });
 db.SecurityDeposit.belongsTo(db.Transaction, { foreignKey: 'transactionId', as: 'transaction' });
 
-db.User.hasMany(db.Review, { foreignKey: 'renterId', as: 'reviews' }); 
+db.User.hasMany(db.Dispute, { foreignKey: 'userId', as: 'disputes' });
+db.Dispute.belongsTo(db.User, { foreignKey: 'userId', as: 'user' });
+db.Item.hasMany(db.Dispute, { foreignKey: 'itemId', as: 'disputes' });
+db.Dispute.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
+
+db.User.hasMany(db.Review, { foreignKey: 'renterId', as: 'reviews' });
 db.Review.belongsTo(db.User, { foreignKey: 'renterId', as: 'renter' });
 
 db.Item.hasMany(db.Review, { foreignKey: 'itemId', as: 'itemReviews' });

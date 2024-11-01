@@ -28,7 +28,7 @@ exports.createTransaction = async (req, res, next) => {
       itemId,
       renterId,
       rentalDuration,
-     // pickupMethod,
+  
       pricePerDay: item.pricePerDay,
       priceToPay,
     });
@@ -87,7 +87,7 @@ exports.getTransactionById = async (req, res, next) => {
 
 exports.updateTransaction = async (req, res, next) => {
   const { id } = req.params;
-  const { rentalDuration, pickupMethod } = req.body;
+  const { rentalDuration} = req.body;
 
   try {
     const transaction = await Transaction.findByPk(id);
