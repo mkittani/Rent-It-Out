@@ -12,6 +12,7 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
+const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +21,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
-
+app.use('/api/deliveryoptions', deliveryOptionRoutes);
 app.get('/', (req, res) => {
   res.json({ message: 'All goooood!' });
 });

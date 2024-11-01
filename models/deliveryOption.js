@@ -25,10 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         
       },
-      {
-        tableName: 'DeliveryOption', 
-        timestamps: false, 
-      }
+    
+    {
+      timestamps: true,
+    }
     );
   
     return DeliveryOption;

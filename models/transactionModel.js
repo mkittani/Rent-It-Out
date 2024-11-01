@@ -38,10 +38,7 @@ module.exports = (sequelize, DataTypes) => {
           min: 1,
         },
       },
-      pickupMethod: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+     
       pricePerDay: {
         type: DataTypes.DOUBLE,
         allowNull: false,
