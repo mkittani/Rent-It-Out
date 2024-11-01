@@ -1,6 +1,8 @@
+// server.js
 const express = require('express');
 require('dotenv').config();
 const db = require('./models');
+const securityRouter = require('./routes/securityRouter');
 
 const app = express();
 
@@ -12,18 +14,22 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
-const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes');
+const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes'); 
+const securityRoutes = require('./routes/securityRouter'); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
-app.use('/api/deliveryoptions', deliveryOptionRoutes);
+app.use('/api/deliveryoptions', deliveryOptionRoutes); 
+app.use('/api/security-deposits', securityRouter); 
+
 app.get('/', (req, res) => {
-  res.json({ message: 'All goooood!' });
+  res.json({ message: 'All good!' });
 });
 
 app.use(errorHandler);
