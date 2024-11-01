@@ -14,17 +14,20 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
-const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
+const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes'); 
+const securityRoutes = require('./routes/securityRouter'); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Define routes
+
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
-app.use('/api/security-deposits', securityRouter);
+app.use('/api/deliveryoptions', deliveryOptionRoutes); 
+app.use('/api/security-deposits', securityRouter); 
+
 app.get('/', (req, res) => {
   res.json({ message: 'All good!' });
 });
