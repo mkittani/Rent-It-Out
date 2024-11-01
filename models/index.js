@@ -31,6 +31,8 @@ db.Item = require('./itemModel.js')(sequelize, DataTypes);
 db.Transaction = require('./transactionModel')(sequelize, DataTypes);
 db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes); // Corrected file name
 db.Review = require('./reviews')(sequelize, DataTypes);
+db.DeliveryOption = require('./deliveryOption.js')(sequelize, DataTypes);
+db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes);
 
 // Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
