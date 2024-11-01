@@ -31,7 +31,7 @@ db.Item = require('./itemModel.js')(sequelize, DataTypes);
 db.Transaction = require('./transactionModel')(sequelize, DataTypes);
 db.DeliveryOption = require('./deliveryOption.js')(sequelize, DataTypes);
 db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes);
-
+db.Dispute = require('./Dispute')(sequelize, DataTypes);
 // Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
 db.Item.belongsTo(db.Category, { foreignKey: 'categoryId', as: 'category' });
@@ -51,6 +51,10 @@ db.Transaction.belongsTo(db.DeliveryOption, { foreignKey: 'deliveryOptionId', as
 db.Transaction.hasOne(db.SecurityDeposit, { foreignKey: 'transactionId', as: 'securityDeposit' });
 db.SecurityDeposit.belongsTo(db.Transaction, { foreignKey: 'transactionId', as: 'transaction' });
 
+db.User.hasMany(db.Dispute, { foreignKey: 'userId', as: 'disputes' });
+db.Dispute.belongsTo(db.User, { foreignKey: 'userId', as: 'user' });
+db.Item.hasMany(db.Dispute, { foreignKey: 'itemId', as: 'disputes' });
+db.Dispute.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
 db.sequelize
   .sync({ force: false })
   .then(() => {
