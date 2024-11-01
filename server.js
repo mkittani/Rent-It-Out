@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const db = require('./models');
 const securityRouter = require('./routes/securityRouter');
+const currencyRouter = require('./routes/currencyRouter'); // Import currency router
 
 const app = express();
 
@@ -17,11 +18,16 @@ const securityRoutes = require('./routes/securityRouter'); // Add security depos
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Register routes
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/security-deposits', securityRouter);
+app.use('/api/currency', currencyRouter);
+
+
 app.get('/', (req, res) => {
   res.json({ message: 'All good!' });
 });

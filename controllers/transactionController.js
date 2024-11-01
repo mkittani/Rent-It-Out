@@ -1,5 +1,6 @@
 const db = require('../models');
 const Transaction = db.Transaction;
+const { convertCurrency } = require('../services/currencyService');
 const Item = db.Item;
 const User = db.User;
 
@@ -128,6 +129,40 @@ exports.deleteTransaction = async (req, res, next) => {
       .status(200)
       .json({ message: 'Transaction deleted successfully' });
   } catch (error) {
+    next(error);
+  }
+};
+
+exports.getTransactionCostInCurrency = async (req, res, next) => {
+  const { id } = req.params;
+  const { currency } = req.query; // The target currency to convert to, e.g., EUR, GBP
+
+  if (!currency) {
+    return res.status(400).json({ error: 'Please provide a currency parameter' });
+  }
+
+  try {
+    // Find the transaction by ID
+    const transaction = await Transaction.findByPk(id);
+
+    if (!transaction) {
+      return res.status(404).json({ error: 'Transaction not found' });
+    }
+
+    // Get the priceToPay in the original currency (assumed to be USD)
+    const originalPriceToPay = transaction.priceToPay;
+
+    // Convert the price to the requested currency
+    const convertedPriceToPay = await convertCurrency('USD', currency.toUpperCase(), originalPriceToPay);
+
+    return res.status(200).json({
+      originalCurrency: 'USD',
+      targetCurrency: currency.toUpperCase(),
+      originalPriceToPay,
+      convertedPriceToPay,
+    });
+  } catch (error) {
+    console.error('Error converting transaction cost:', error.message);
     next(error);
   }
 };
