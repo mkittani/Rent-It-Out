@@ -5,7 +5,7 @@ const Item = db.Item;
 const User = db.User;
 
 exports.createTransaction = async (req, res, next) => {
-  const { itemId, renterId, rentalDuration, pickupMethod } = req.body;
+  const { itemId, renterId, rentalDuration, deliveryOptionId } = req.body;
 
   try {
     const item = await Item.findByPk(itemId);
@@ -28,7 +28,7 @@ exports.createTransaction = async (req, res, next) => {
       itemId,
       renterId,
       rentalDuration,
-      pickupMethod,
+     // pickupMethod,
       pricePerDay: item.pricePerDay,
       priceToPay,
     });
@@ -98,7 +98,7 @@ exports.updateTransaction = async (req, res, next) => {
     }
 
     transaction.rentalDuration = rentalDuration || transaction.rentalDuration;
-    transaction.pickupMethod = pickupMethod || transaction.pickupMethod;
+    //transaction.pickupMethod = pickupMethod || transaction.pickupMethod;
 
     if (rentalDuration) {
       transaction.priceToPay = transaction.pricePerDay * rentalDuration;

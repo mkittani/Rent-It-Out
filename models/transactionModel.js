@@ -23,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
+      deliveryOptionId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'DeliveryOptions', 
+          key: 'id',
+        },
+      },
       rentalDuration: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -30,10 +38,7 @@ module.exports = (sequelize, DataTypes) => {
           min: 1,
         },
       },
-      pickupMethod: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+     
       pricePerDay: {
         type: DataTypes.DOUBLE,
         allowNull: false,
