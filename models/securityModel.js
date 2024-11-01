@@ -1,4 +1,3 @@
-// securityModel.js
 module.exports = (sequelize, DataTypes) => {
     const securityModel = sequelize.define('securityModel', {
       id: {
