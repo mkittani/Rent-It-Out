@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 require('dotenv').config();
 const db = require('./models');
@@ -18,8 +17,6 @@ const securityRoutes = require('./routes/securityRouter'); // Add security depos
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Define routes
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
