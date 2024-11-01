@@ -15,7 +15,7 @@ const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
 const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
-const reviewRoutes = require('./routes/reviewRouter');
+const reviewRoutes = require('./routes/reviews');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -4,10 +4,12 @@ const reviewController = require('../controllers/reviewController');
 
 router.post('/', reviewController.createReview);
 
-router.get('/:itemId', reviewController.getReviewsByItemId);
+router.get('/item/:itemId', reviewController.getReviewsByItemId);
 
-router.put('/:reviewId', reviewController.updateReview);
+router.get('/review/:id', reviewController.getReviewById);
 
-router.delete('/:reviewId', reviewController.deleteReview);
+router.put('/:id', reviewController.updateReview);
+
+router.delete('/:id', reviewController.deleteReview);
 
 module.exports = router;

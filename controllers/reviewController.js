@@ -4,21 +4,22 @@ const User = db.User;
 const Item = db.Item;
 
 exports.createReview = async (req, res) => {
-  const { itemId, userId, rating, comment } = req.body;
+  const { itemId, renterId, rating, comment } = req.body;
 
   try {
     const [item, user] = await Promise.all([
       Item.findByPk(itemId),
-      User.findByPk(userId),
+      User.findByPk(renterId),
     ]);
 
     if (!item || !user) {
       return res.status(404).json({ message: 'Item or user not found' });
     }
 
-    const newReview = await Review.create({ itemId, userId, rating, comment });
+    const newReview = await Review.create({ itemId, renterId, rating, comment });
     return res.status(201).json({ message: 'Review created successfully', review: newReview });
   } catch (error) {
+    console.error("Error creating review:", error.message);
     return res.status(500).json({ message: 'Error creating review', error: error.message });
   }
 };
