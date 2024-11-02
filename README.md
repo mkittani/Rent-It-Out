@@ -15,7 +15,7 @@ A Peer-to-Peer Rental Platform for Everyday Items.
 
 Rent-It-Out is a rental platform where users can list items for rent, browse available items, and manage rental transactions.
 
-It’s designed for individuals or businesses who want to rent out items in various categories and for people seeking short-term rentals instead of purchasing.
+It’s designed for individuals or businesses who want to rent out items in various categories, and for people seeking short-term rentals instead of purchasing.
 
 
 ## Features
@@ -31,6 +31,9 @@ It’s designed for individuals or businesses who want to rent out items in vari
 
 - **Node.js**: Backend development platform.
 - **MySQL**: Database.
+- **Sequelize**: Promise-based Node.js ORM for database management.
+- **Jest**: JavaScript testing framework.
+- **Supertest**: High-level abstraction for testing HTTP
 - **Postman**: API building and documentation tool.
 - **Git**: Version control system.
 - **Draw.io**: UML drawing.
