@@ -29,9 +29,15 @@ db.User = require('./userModel.js')(sequelize, DataTypes);
 db.Category = require('./categoryModel.js')(sequelize, DataTypes);
 db.Item = require('./itemModel.js')(sequelize, DataTypes);
 db.Transaction = require('./transactionModel')(sequelize, DataTypes);
+db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes); // Corrected file name
+db.Review = require('./reviews')(sequelize, DataTypes);
 db.DeliveryOption = require('./deliveryOption.js')(sequelize, DataTypes);
+<<<<<<< HEAD
 db.SecurityDeposit = require('./securityModel')(sequelize, DataTypes);
 db.Dispute = require('./Dispute')(sequelize, DataTypes);
+=======
+
+>>>>>>> 6d176ec2ba493edb2ea4cb371cf40e51a586ce64
 // Define relationships
 db.Category.hasMany(db.Item, { foreignKey: 'categoryId', as: 'items' });
 db.Item.belongsTo(db.Category, { foreignKey: 'categoryId', as: 'category' });
@@ -51,10 +57,19 @@ db.Transaction.belongsTo(db.DeliveryOption, { foreignKey: 'deliveryOptionId', as
 db.Transaction.hasOne(db.SecurityDeposit, { foreignKey: 'transactionId', as: 'securityDeposit' });
 db.SecurityDeposit.belongsTo(db.Transaction, { foreignKey: 'transactionId', as: 'transaction' });
 
+<<<<<<< HEAD
 db.User.hasMany(db.Dispute, { foreignKey: 'userId', as: 'disputes' });
 db.Dispute.belongsTo(db.User, { foreignKey: 'userId', as: 'user' });
 db.Item.hasMany(db.Dispute, { foreignKey: 'itemId', as: 'disputes' });
 db.Dispute.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
+=======
+db.User.hasMany(db.Review, { foreignKey: 'renterId', as: 'reviews' }); 
+db.Review.belongsTo(db.User, { foreignKey: 'renterId', as: 'renter' });
+
+db.Item.hasMany(db.Review, { foreignKey: 'itemId', as: 'itemReviews' });
+db.Review.belongsTo(db.Item, { foreignKey: 'itemId', as: 'item' });
+
+>>>>>>> 6d176ec2ba493edb2ea4cb371cf40e51a586ce64
 db.sequelize
   .sync({ force: false })
   .then(() => {

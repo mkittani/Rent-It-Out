@@ -14,9 +14,16 @@ const categoryRoutes = require('./routes/categoryRouter');
 const userRoutes = require('./routes/userRouter');
 const itemRoutes = require('./routes/itemRouter');
 const transactionRoutes = require('./routes/transactionRouter');
+const securityRoutes = require('./routes/securityRouter'); // Add security deposit routes
+const reviewRoutes = require('./routes/reviews');
+const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes');
+const securityRoutes = require('./routes/securityRouter');
 const deliveryOptionRoutes = require('./routes/deliveryOptionRoutes'); 
+<<<<<<< HEAD
 const securityRoutes = require('./routes/securityRouter'); 
 const disputeRoutes = require('./routes/disputeRoutes');
+=======
+>>>>>>> 6d176ec2ba493edb2ea4cb371cf40e51a586ce64
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,9 +33,14 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/security-deposits', securityRouter);
+app.use('/api/reviews', reviewRoutes);
 app.use('/api/deliveryoptions', deliveryOptionRoutes); 
+<<<<<<< HEAD
 app.use('/api/security-deposits', securityRouter); 
 app.use('/api/disputes', disputeRoutes);
+=======
+>>>>>>> 6d176ec2ba493edb2ea4cb371cf40e51a586ce64
 
 app.get('/', (req, res) => {
   res.json({ message: 'All good!' });
