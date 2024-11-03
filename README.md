@@ -65,9 +65,9 @@ It’s designed for individuals or businesses who want to rent out items in vari
 ```
 
 
-## Documentation
+## API Documentation
 
-The API is documented using Postman. Access it [here](https://documenter.getpostman.com/view/39239724/2sAY4xB2c8)
+The API is documented using Postman. You can access the full documentation [here](https://documenter.getpostman.com/view/39239724/2sAY4xB2c8).
 
 
 
