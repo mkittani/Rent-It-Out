@@ -5,7 +5,7 @@ const Item = db.Item;
 const User = db.User;
 
 exports.createTransaction = async (req, res, next) => {
-  const { itemId, renterId, rentalDuration, deliveryOptionId } = req.body;
+  const { itemId, renterId, rentalDuration } = req.body;
 
   try {
     const item = await Item.findByPk(itemId);
