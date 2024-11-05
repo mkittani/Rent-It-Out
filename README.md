@@ -27,6 +27,9 @@ It’s designed for individuals or businesses who want to rent out items in vari
 - Logistics
 - Revenue & Insurance
 - Good User Experience
+- Reviews and Disputes
+- Admin
+- Test cases
 
 ## Technologies Used
 
