@@ -39,6 +39,7 @@ It’s designed for individuals or businesses who want to rent out items in vari
 - **Git**: Version control system.
 - **Draw.io**: UML drawing.
 - **VScode**: Our IDE.
+- **XAMPP**: Local server.
 - **readme.so**: To write this readme file
 ## Run Locally
 
