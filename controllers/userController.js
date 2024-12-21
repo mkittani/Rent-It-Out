@@ -113,7 +113,7 @@ exports.authenticateUser = async (req, res, next) => {
       return next(error);
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = bcryptawait .compare(password, user.password);
     if (!isPasswordValid) {
       const error = new Error('Invalid credentials');
       error.statusCode = 401;

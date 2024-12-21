@@ -14,7 +14,6 @@ const baseUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/`;
  */
 async function convertCurrency(fromCurrency, toCurrency, amount) {
   try {
-    // Append fromCurrency to the base URL
     const response = await axios.get(`${baseUrl}${fromCurrency}`);
     
     if (response.status !== 200) {
@@ -27,8 +26,6 @@ async function convertCurrency(fromCurrency, toCurrency, amount) {
     if (!conversionRate) {
       throw new Error('Invalid currency code');
     }
-
-    // Calculate the converted amount
     return parseFloat((amount * conversionRate).toFixed(2));
   } catch (error) {
     console.error('Error fetching exchange rate:', error.message);

@@ -98,7 +98,6 @@ exports.updateTransaction = async (req, res, next) => {
     }
 
     transaction.rentalDuration = rentalDuration || transaction.rentalDuration;
-    //transaction.pickupMethod = pickupMethod || transaction.pickupMethod;
 
     if (rentalDuration) {
       transaction.priceToPay = transaction.pricePerDay * rentalDuration;
@@ -135,24 +134,21 @@ exports.deleteTransaction = async (req, res, next) => {
 
 exports.getTransactionCostInCurrency = async (req, res, next) => {
   const { id } = req.params;
-  const { currency } = req.query; // The target currency to convert to, e.g., EUR, GBP
+  const { currency } = req.query; 
 
   if (!currency) {
     return res.status(400).json({ error: 'Please provide a currency parameter' });
   }
 
   try {
-    // Find the transaction by ID
     const transaction = await Transaction.findByPk(id);
 
     if (!transaction) {
       return res.status(404).json({ error: 'Transaction not found' });
     }
 
-    // Get the priceToPay in the original currency (assumed to be USD)
     const originalPriceToPay = transaction.priceToPay;
 
-    // Convert the price to the requested currency
     const convertedPriceToPay = await convertCurrency('USD', currency.toUpperCase(), originalPriceToPay);
 
     return res.status(200).json({
